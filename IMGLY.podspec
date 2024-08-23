@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-    s.name         = 'IMGLY'
+    s.name         = 'IMGLYUI'
     s.version      = '1.0.0'
     s.summary      = 'Video Editor'
     s.description  = 'Added Imgly for Video Editing'
