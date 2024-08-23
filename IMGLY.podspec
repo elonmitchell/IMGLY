@@ -2,9 +2,9 @@ Pod::Spec.new do |s|
     s.name         = 'IMGLYUI'
     s.version      = '1.0.0'
     s.summary      = 'Video Editor'
-    s.description  = 'Added Imgly for Video Editing'
-  A more detailed description of IMGLYUI.
-  DESC
+    s.description  = <<-DESC
+A custom video editor
+DESC
     s.homepage     = 'https://github.com/elonmitchell/IMGLY'
     s.license      = { :type => 'MIT', :file => 'LICENSE' }
     s.author       = { 'Elon Mitchell' => 'elon@levelsapp.ai' }
