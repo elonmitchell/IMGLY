@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-  name: "IMGLYUI",
+  name: "IMGLY",
   platforms: [.iOS(.v16)],
   products: [
     // Comment out these products for development to fix SwiftUI previews inside this package
@@ -14,7 +14,7 @@ let package = Package(
     .library(name: "IMGLYPostcardEditor", targets: ["IMGLYPostcardEditor"]),
 
     // Default product which includes all modules
-    .library(name: "IMGLYUI",
+    .library(name: "IMGLY",
              targets: [
                "IMGLYCore",
                "IMGLYCoreUI",
