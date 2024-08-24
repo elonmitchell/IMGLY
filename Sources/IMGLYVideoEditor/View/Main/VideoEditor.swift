@@ -24,7 +24,6 @@ public struct VideoEditor: View {
         ToolbarItemGroup(placement: .navigationBarTrailing) {
           HStack(spacing: 16) {
             UndoRedoButtons()
-            ExportButton()
           }
           .labelStyle(.adaptiveIconOnly)
         }
