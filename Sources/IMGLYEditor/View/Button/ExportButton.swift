@@ -8,17 +8,20 @@ import SwiftUI
   @_spi(Internal) public init() {}
 
   @_spi(Internal) public var body: some View {
-    Button(action: {
-      // Handle export action here
-    }) {
-      Text("Export")
-        .padding()
-        .background(Color.blue)
-        .foregroundColor(.white)
-        .cornerRadius(8)
-    }
-    .disabled(interactor.isLoading
-      || interactor.isExporting
-      || (interactor.sceneMode == .video && interactor.timelineProperties.timeline?.totalDuration == .zero))
+    Text("Export")
+      .onTapGesture {
+        // Restore the original export function call here
+        interactor.export()
+      }
+      .disabled(interactor.isLoading
+        || interactor.isExporting
+        || (interactor.sceneMode == .video && interactor.timelineProperties.timeline?.totalDuration == .zero))
+  }
+}
+
+struct ExportButton_Previews: PreviewProvider {
+  static var previews: some View {
+    ExportButton()
+      .environmentObject(Interactor()) // Provide an environment object if needed
   }
 }
