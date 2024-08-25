@@ -26,7 +26,6 @@ public struct VideoEditor: View {
             UndoRedoButtons()
             ExportButton()
           }
-          .labelStyle(.adaptiveIconOnly)
         }
       }
       .imgly.editor(settings, behavior: .video)
