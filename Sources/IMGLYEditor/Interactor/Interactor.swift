@@ -1556,9 +1556,9 @@ extension Interactor {
         hideExportSheet()
       } catch {
         if export.isPresented {
-          showExportSheet(.error(error) { [weak self] in
-            self?.hideExportSheet()
-          })
+//          showExportSheet(.error(error) { [weak self] in
+//            self?.hideExportSheet()
+//          })
         } else {
           handleError(error)
         }
