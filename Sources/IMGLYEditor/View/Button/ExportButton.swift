@@ -9,8 +9,7 @@ import SwiftUI
 
   @_spi(Internal) public var body: some View {
     Button(action: {
-      // Perform the same action as ActionButton(.export)
-      // You may need to access the same functionality or action as defined in ActionButton(.export)
+        interactor.exportScene()
     }) {
       Text("Export")
         .font(.system(size: 16, weight: .medium))
