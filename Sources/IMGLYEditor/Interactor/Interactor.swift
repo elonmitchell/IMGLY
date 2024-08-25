@@ -1537,35 +1537,47 @@ extension Interactor {
     }
   }
 
-  func exportScene() {
-    pause()
-    let lastTask = exportTask
-    lastTask?.cancel()
-    isExporting = true
-    exportTask = Task(priority: .userInitiated) {
-      _ = await lastTask?.result
-      if Task.isCancelled {
-        return
-      }
-      guard let engine else {
-        return
-      }
-      do {
-        try await behavior.exportScene(.init(engine, self))
-      } catch is CancellationError {
-        hideExportSheet()
-      } catch {
-        if export.isPresented {
-//          showExportSheet(.error(error) { [weak self] in
-//            self?.hideExportSheet()
-//          })
-        } else {
-          handleError(error)
+    func exportScene() {
+        pause() // Pause any ongoing processes related to export
+
+        let lastTask = exportTask
+        lastTask?.cancel() // Cancel the previous export task
+
+        isExporting = true // Set the flag indicating that export is in progress
+
+        exportTask = Task(priority: .userInitiated) { // Start a new task with user-initiated priority
+            // Await the result of the previous task and check if it was cancelled
+            _ = await lastTask?.result
+            if Task.isCancelled {
+                return
+            }
+
+            // Ensure the engine is available
+            guard let engine else {
+                return
+            }
+
+            do {
+                // Attempt to export the scene
+                try await behavior.exportScene(.init(engine, self))
+            } catch is CancellationError {
+                // Handle cancellation specifically
+                hideExportSheet()
+            } catch {
+                // Handle other errors
+                if export.isPresented {
+                    showExportSheet(.error(error) { [weak self] in
+                        self?.hideExportSheet()
+                    })
+                } else {
+                    handleError(error)
+                }
+            }
+            
+            // Reset the exporting flag
+            isExporting = false
         }
-      }
-      isExporting = false
     }
-  }
 
   // swiftlint:disable:next cyclomatic_complexity
   func sheetType(for designBlockType: String, with fillType: String? = nil,
