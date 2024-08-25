@@ -30,6 +30,8 @@ import SwiftUI
   }
 
   let fontLibrary = FontLibrary()
+  var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+
 
   @Published @_spi(Internal) public private(set) var isLoading = true
   @Published @_spi(Internal) public private(set) var isEditing = true
@@ -1536,8 +1538,22 @@ extension Interactor {
       isEditing = true
     }
   }
+    
+    func startBackgroundTask() {
+        backgroundTask = UIApplication.shared.beginBackgroundTask(withName: "ExportSceneTask") {
+            // Clean up code in case the task is not completed before time expires
+            UIApplication.shared.endBackgroundTask(self.backgroundTask)
+            self.backgroundTask = .invalid
+        }
+    }
+
+    func endBackgroundTask() {
+        UIApplication.shared.endBackgroundTask(self.backgroundTask)
+        self.backgroundTask = .invalid
+    }
 
     func exportScene() {
+        startBackgroundTask()
         pause() // Pause any ongoing processes related to export
 
         let lastTask = exportTask
@@ -1576,6 +1592,7 @@ extension Interactor {
             
             // Reset the exporting flag
             isExporting = false
+            endBackgroundTask()
         }
     }
 
