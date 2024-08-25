@@ -34,9 +34,9 @@ extension Interactor: EditorEventHandler {
   }
 
   func showExportSheet(_ state: ExportView.State) {
-    delayIfNecessary(hideSheet()) { [weak self] in
-      self?.export = .init(state)
-    }
+//    delayIfNecessary(hideSheet()) { [weak self] in
+//      self?.export = .init(state)
+//    }
   }
 
   @discardableResult func hideExportSheet() -> Bool {
