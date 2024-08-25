@@ -25,6 +25,6 @@ import SwiftUI
 
 struct ExportButton_Previews: PreviewProvider {
   static var previews: some View {
-    ExportButton().environmentObject(Interactor()) // Provide the necessary environment object
+    ExportButton() // Provide the necessary environment object
   }
 }
