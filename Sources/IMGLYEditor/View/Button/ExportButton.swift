@@ -14,7 +14,7 @@ import SwiftUI
         Image("custom.export.button", bundle: .module)
             .renderingMode(.original)
             .font(.system(size: 24)) // Adjust the size as needed
-            .padding(12)
+            .padding(8)
     }
     .disabled(interactor.isLoading
       || interactor.isExporting
