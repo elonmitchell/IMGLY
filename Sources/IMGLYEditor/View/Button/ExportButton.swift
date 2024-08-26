@@ -11,10 +11,8 @@ import SwiftUI
     Button(action: {
         interactor.exportScene()
     }) {
-      Text("Ex")
-        .font(.system(size: 16, weight: .medium))
-        .foregroundColor(.blue) // Adjust color as needed
-        .padding()
+        Image(systemName: "square.and.arrow.up.fill")
+            .font(.system(size: 24)) // Adjust the size as needed
     }
     .disabled(interactor.isLoading
       || interactor.isExporting
