@@ -11,7 +11,7 @@ import SwiftUI
     Button(action: {
         interactor.exportScene()
     }) {
-        Image(systemName: "export")
+        Image(systemName: "custom.export.button")
             .font(.system(size: 24)) // Adjust the size as needed
             .foregroundColor(.white)
             .padding(12)
