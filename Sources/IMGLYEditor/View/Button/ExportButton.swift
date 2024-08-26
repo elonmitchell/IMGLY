@@ -13,7 +13,6 @@ import SwiftUI
     }) {
         Image("custom.export.button", bundle: .module)
             .font(.system(size: 24)) // Adjust the size as needed
-            .foregroundColor(.white)
             .padding(12)
     }
     .disabled(interactor.isLoading
