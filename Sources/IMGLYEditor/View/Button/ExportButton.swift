@@ -11,17 +11,10 @@ import SwiftUI
     Button(action: {
         interactor.exportScene()
     }) {
-        if let url = Bundle.main.url(forResource: "export", withExtension: "pdf"),
-           let data = try? Data(contentsOf: url),
-           let uiImage = UIImage(data: data) {
-            Image(uiImage: uiImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 20, height: 20)
-                .padding(12) // Optional padding
-        } else {
-            Text("Image not found")
-        }
+        Image(systemName: "export")
+            .font(.system(size: 24)) // Adjust the size as needed
+            .foregroundColor(.white)
+            .padding(12)
     }
     .disabled(interactor.isLoading
       || interactor.isExporting
