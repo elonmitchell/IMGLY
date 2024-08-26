@@ -21,7 +21,7 @@ import SwiftUI
                 .renderingMode(.original)
                 .font(.system(size: 24))
                 .padding(8)
-                .opacity(shouldDimOpacity ? 0.5 : 1.0) // Adjust opacity based on the state
+                .opacity(shouldDimOpacity ? 0.3 : 1.0) // Adjust opacity based on the state
         }
         .disabled(shouldDimOpacity)
     }
