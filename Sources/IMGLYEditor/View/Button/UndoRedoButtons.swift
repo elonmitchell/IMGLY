@@ -9,7 +9,10 @@ import SwiftUI
         Group {
             Image("custom.undo.button", bundle: .module)
                 .renderingMode(.original)
-                .opacity(interactor.canUndo ? 1.0 : 0.3) // Adjust opacity based on canUndo state
+                .opacity(interactor.canUndo ? 1.0 : 0.3)
+            // Adjust opacity based on canUndo state
+            Spacer() // Add space between undo and redo buttons
+            .frame(width: 16)
             Image("custom.redo.button", bundle: .module)
                 .renderingMode(.original)
                 .opacity(interactor.canRedo ? 1.0 : 0.3) // Adjust opacity based on canRedo state
