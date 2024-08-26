@@ -29,7 +29,7 @@ final class VideoInteractorBehavior: InteractorBehavior {
 
   func rootBottomBarItems(_ context: InteractorContext) throws -> [RootBottomBarItem] {
     var items: [RootBottomBarItem] = [
-      .addFromPhotoRoll,
+      // .addFromPhotoRoll,
       .addFromCamera(systemCamera: false),
       .addOverlay,
       .addText,
