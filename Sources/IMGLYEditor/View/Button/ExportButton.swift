@@ -12,9 +12,13 @@ import SwiftUI
         interactor.exportScene()
     }) {
         Image("custom.export.button", bundle: .module)
+            .renderingMode(.original)
             .font(.system(size: 24)) // Adjust the size as needed
             .padding(12)
     }
+    .disabled(interactor.isLoading
+      || interactor.isExporting
+      || (interactor.sceneMode == .video && interactor.timelineProperties.timeline?.totalDuration == .zero))
   }
 }
 
