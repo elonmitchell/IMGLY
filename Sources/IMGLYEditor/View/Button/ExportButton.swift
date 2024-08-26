@@ -13,6 +13,7 @@ import SwiftUI
     }) {
         Image(systemName: "square.and.arrow.up.fill")
             .font(.system(size: 24)) // Adjust the size as needed
+            .padding()
     }
     .disabled(interactor.isLoading
       || interactor.isExporting
