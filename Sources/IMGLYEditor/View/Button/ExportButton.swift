@@ -15,9 +15,6 @@ import SwiftUI
             .font(.system(size: 24)) // Adjust the size as needed
             .padding(12)
     }
-    .disabled(interactor.isLoading
-      || interactor.isExporting
-      || (interactor.sceneMode == .video && interactor.timelineProperties.timeline?.totalDuration == .zero))
   }
 }
 
