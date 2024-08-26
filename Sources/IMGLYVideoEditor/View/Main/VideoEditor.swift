@@ -22,7 +22,7 @@ public struct VideoEditor: View {
             .navigationTitle("")
             .toolbar {
                 ToolbarItemGroup(placement: .principal) {
-                    HStack(spacing: 8) { // Adjust spacing as needed
+                    HStack() { // Adjust spacing as needed
                         UndoRedoButtons()
                     }
                     .frame(maxWidth: .infinity) // Ensures the HStack takes up all available space
