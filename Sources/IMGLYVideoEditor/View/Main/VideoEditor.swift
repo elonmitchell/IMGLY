@@ -17,26 +17,27 @@ public struct VideoEditor: View {
     self.settings = settings
   }
 
-  public var body: some View {
-    EditorUI(zoomPadding: 1)
-      .navigationTitle("")
-      .toolbar {
-        ToolbarItemGroup(placement: .navigationBarTrailing) {
-          HStack(spacing: 16) {
-            UndoRedoButtons()
-            ExportButton()
-          }
-        }
-      }
-      .imgly.editor(settings, behavior: .video)
-      .imgly.onCreate { engine in
-        guard let onCreate else {
-          try await OnCreate.loadScene(from: Self.defaultScene)(engine)
-          return
-        }
-        try await onCreate(engine)
-      }
-  }
+    public var body: some View {
+        EditorUI(zoomPadding: 1)
+            .navigationTitle("")
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    HStack {
+                        Spacer() // Push content to the center
+                        UndoRedoButtons()
+                        Spacer() // Push content to the center
+                    }
+                }
+            }
+            .imgly.editor(settings, behavior: .video)
+            .imgly.onCreate { engine in
+                guard let onCreate else {
+                    try await OnCreate.loadScene(from: Self.defaultScene)(engine)
+                    return
+                }
+                try await onCreate(engine)
+            }
+    }
 }
 
 struct VideoUI_Previews: PreviewProvider {
