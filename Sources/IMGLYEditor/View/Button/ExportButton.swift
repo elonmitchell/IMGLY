@@ -7,27 +7,23 @@ import SwiftUI
 
     @_spi(Internal) public init() {}
 
-    @_spi(Internal) public var body: some View {
+    var shouldDimOpacity: Bool {
+        interactor.isLoading
+        || interactor.isExporting
+        || (interactor.sceneMode == .video && interactor.timelineProperties.timeline?.totalDuration == .zero)
+    }
+
+    public var body: some View {
         Button(action: {
             interactor.exportScene()
         }) {
             Image("custom.export.button", bundle: .module)
-                .renderingMode(.original) // Ensure the image displays in full color
-                .font(.system(size: 24)) // Adjust the size as needed
-                .padding(12)
-                .opacity(interactor.isLoading
-                         || interactor.isExporting
-                         || (interactor.sceneMode == .video && interactor.timelineProperties.timeline?.totalDuration == .zero) ? 0.5 : 1.0) // Reduce opacity when disabled
-                .overlay(
-                    interactor.isLoading
-                    || interactor.isExporting
-                    || (interactor.sceneMode == .video && interactor.timelineProperties.timeline?.totalDuration == .zero) ?
-                    Color.gray.opacity(0.4).blendMode(.overlay) : Color.clear
-                )
+                .renderingMode(.original)
+                .font(.system(size: 24))
+                .padding(8)
+                .opacity(shouldDimOpacity ? 0.5 : 1.0) // Adjust opacity based on the state
         }
-        .disabled(interactor.isLoading
-                  || interactor.isExporting
-                  || (interactor.sceneMode == .video && interactor.timelineProperties.timeline?.totalDuration == .zero))
+        .disabled(shouldDimOpacity)
     }
 }
 
