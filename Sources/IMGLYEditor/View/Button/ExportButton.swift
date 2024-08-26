@@ -12,8 +12,8 @@ import SwiftUI
         interactor.exportScene()
     }) {
         Image(systemName: "square.and.arrow.up.fill")
-            .font(.system(size: 24)) // Adjust the size as needed
-            .padding()
+            .font(.system(size: 20)) // Adjust the size as needed
+            .padding(8)
     }
     .disabled(interactor.isLoading
       || interactor.isExporting
