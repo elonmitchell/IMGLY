@@ -22,10 +22,12 @@ public struct VideoEditor: View {
             .navigationTitle("")
             .toolbar {
                 ToolbarItemGroup(placement: .principal) {
-                    HStack(spacing: 20) { // Adjust spacing as needed
+                    HStack {
+                        Spacer() // Add space before the buttons
                         UndoRedoButtons()
+                        Spacer() // Add space after the buttons
                     }
-                    .frame(maxWidth: .infinity) // Ensures the HStack takes up all available space
+                    .frame(maxWidth: .infinity)
                 }
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     ExportButton()
