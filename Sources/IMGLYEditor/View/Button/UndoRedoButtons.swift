@@ -24,7 +24,7 @@ import IMGLYEngine
             .disabled(!interactor.canUndo) // Optionally disable the button if undo is not possible
 
             Spacer()
-                .frame(width: 16) // Adjust the width as needed
+                .frame(width: 26) // Adjust the width as needed
 
             Button(action: {
                 // Execute the redo action
