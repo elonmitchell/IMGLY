@@ -21,12 +21,11 @@ public struct VideoEditor: View {
         EditorUI(zoomPadding: 1)
             .navigationTitle("")
             .toolbar {
+                ToolbarItemGroup(placement: .principal) {
+                    UndoRedoButtons()
+                }
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    HStack {
-                        Spacer() // Push content to the center
-                        UndoRedoButtons()
-                        Spacer() // Push content to the center
-                    }
+                    ExportButton()
                 }
             }
             .imgly.editor(settings, behavior: .video)
