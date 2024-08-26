@@ -11,8 +11,10 @@ import SwiftUI
     Button(action: {
         interactor.exportScene()
     }) {
-        Image(systemName: "square.and.arrow.up.fill")
-            .font(.system(size: 20)) // Adjust the size as needed
+        Image("export")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 20, height: 20) // Adjust size as needed
             .padding(12)
     }
     .disabled(interactor.isLoading
