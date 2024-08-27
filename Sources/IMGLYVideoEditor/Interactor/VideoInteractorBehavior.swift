@@ -31,7 +31,7 @@ final class VideoInteractorBehavior: InteractorBehavior {
     var items: [RootBottomBarItem] = [
       // .addFromPhotoRoll,
       .addFromCamera(systemCamera: false),
-      .addOverlay,
+      //.addOverlay,
       .addText,
       .addStickerOrShape,
       .addAudio,
