@@ -73,7 +73,9 @@ public struct VideoEditor: View {
           try dockItems(context)
         } else {
           Dock.Buttons.imglyCamera()
+          Dock.Buttons.photoRoll()
           Dock.Buttons.textLibrary()
+          Dock.Buttons.overlaysLibrary()
           Dock.Buttons.stickersAndShapesLibrary()
           Dock.Buttons.audioLibrary()
           Dock.Buttons.voiceover()
