@@ -267,9 +267,7 @@ extension Interactor: EditorEventHandler {
   }
 
   func showExportSheet(_ state: ExportView.State) {
-    delayIfNecessary(hideSheet()) { [weak self] in
-      self?.export.show(state)
-    }
+    // Disabled: Don't show export sheet popup - export directly
   }
 
   @discardableResult func hideExportSheet() -> Bool {

@@ -42,10 +42,29 @@ public struct VideoEditor: View {
           NavigationBar.ItemGroup(placement: .topBarLeading) {
             NavigationBar.Buttons.closeEditor()
           }
+          NavigationBar.ItemGroup(placement: .principal) {
+            NavigationBar.Buttons.undo(
+              label: { context in
+                Image("custom.undo.button", bundle: .module)
+                  .renderingMode(.original)
+                  .opacity(try context.engine?.editor.canUndo() == true ? 1.0 : 0.5)
+              }
+            )
+            NavigationBar.Buttons.redo(
+              label: { context in
+                Image("custom.redo.button", bundle: .module)
+                  .renderingMode(.original)
+                  .opacity(try context.engine?.editor.canRedo() == true ? 1.0 : 0.5)
+              }
+            )
+          }
           NavigationBar.ItemGroup(placement: .topBarTrailing) {
-            NavigationBar.Buttons.undo()
-            NavigationBar.Buttons.redo()
-            NavigationBar.Buttons.export()
+            NavigationBar.Buttons.export(
+              label: { _ in
+                Image("custom.export.button", bundle: .module)
+                  .renderingMode(.original)
+              }
+            )
           }
         }
       }
@@ -53,9 +72,7 @@ public struct VideoEditor: View {
         if let dockItems {
           try dockItems(context)
         } else {
-          Dock.Buttons.photoRoll()
           Dock.Buttons.imglyCamera()
-          Dock.Buttons.overlaysLibrary()
           Dock.Buttons.textLibrary()
           Dock.Buttons.stickersAndShapesLibrary()
           Dock.Buttons.audioLibrary()
