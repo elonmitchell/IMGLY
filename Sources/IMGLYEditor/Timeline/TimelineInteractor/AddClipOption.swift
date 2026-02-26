@@ -8,7 +8,7 @@ import SwiftUI
 
   /// The default configuration for the timeline add clip buttons
   @MainActor
-  @_spi(Internal) public static var defaultOptions: [AddClipOption] = [.camera]
+  @_spi(Internal) public static var defaultOptions: [AddClipOption] = [.camera, .library]
 
   /// Display name for the option
   public var displayName: LocalizedStringResource {
